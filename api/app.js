@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
 
-var connectionString = process.env.DATABASE_URL || 'postgresql://root@localhost:26257?sslmode=disable';
+var connectionString = process.env.DATABASE_URL || 'postgresql://root@10.128.0.2:26257?sslmode=disable';
 var client = new pg.Client(connectionString);
 
 app.get('/', function(req, res) {

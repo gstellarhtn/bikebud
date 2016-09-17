@@ -2,7 +2,7 @@ angular.module('bb-app')
 
   .controller('MapCtrl', function($scope, uiGmapGoogleMapApi, uiGmapIsReady, bixiStationService, Map) {
 
-    bixiStationService.getTorontoBixi();
+
 
 
     $scope.map = {
@@ -33,6 +33,9 @@ angular.module('bb-app')
     // fires when gmap is loaded
     uiGmapIsReady.promise(1).then(function (instances) {
        var inst = instances[0]; // gets the map
-       Map.calculateAndDisplayRoute(inst.map);
+        bixiStationService.getTorontoBixi().then(function(data) {
+          Map.calculateAndDisplayRoute(inst.map, data);
+        });
+
      });
   })

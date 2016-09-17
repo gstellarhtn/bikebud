@@ -88,7 +88,7 @@ app.post('/login', function(req, res) {
   }
 });
 
-server.listen(80, 'localhost', function() {
+server.listen(80, function() {
   console.log('Example app listening on port 80!');
 });
 

@@ -1,5 +1,8 @@
 angular.module('bb-app')
-.controller('MapCtrl', function($scope, uiGmapGoogleMapApi, uiGmapIsReady, bixiStationService) {
+
+.controller('MapCtrl', function($scope, uiGmapGoogleMapApi, uiGmapIsReady, bixiStationService, Map) {
+
+    bixiStationService.getTorontoBixi();
 
     $scope.map = {
       center: {
@@ -22,33 +25,14 @@ angular.module('bb-app')
         zoomControl: true
       }
     };
-
-    bixiStationService.getTorontoBixi();
-
-    // $scope.marker = {
-    //   id: 0,
-    //   options: {draggable: false},
-    //   events: {
-    //     click: function (marker) {
-    //       var markerCount = Map.getUserRoute().coordinates.length;
-    //       if (markerCount < 2) {
-    //         var lat = marker.getPosition().lat();
-    //         var lon = marker.getPosition().lng();
-    //         marker.setVisible(false);
-    //         Map.addMarker(new google.maps.LatLng(lat, lon));
-    //       }
-    //
-    //     }
-    //   }
-    // };
-
     uiGmapGoogleMapApi.then(function(maps) {
+
     });
 
     // fires when gmap is loaded
     uiGmapIsReady.promise(1).then(function (instances) {
        var inst = instances[0]; // gets the map
-       calculateAndDisplayRoute(inst.map);
+       Map.calculateAndDisplayRoute(inst.map);
      });
 
     function calculateAndDisplayRoute(map) {
@@ -116,4 +100,5 @@ angular.module('bb-app')
     //   { title: 'Rap', id: 5 },
     //   { title: 'Cowbell', id: 6 }
     // ];
+
   })

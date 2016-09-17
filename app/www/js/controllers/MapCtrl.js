@@ -1,8 +1,6 @@
 angular.module('bb-app')
 
-.controller('MapCtrl', function($scope, uiGmapGoogleMapApi, uiGmapIsReady, bixiStationService, Map) {
-
-    console.log(jsnx);
+.controller('MapCtrl', function($scope, uiGmapGoogleMapApi, uiGmapIsReady, bixiStationService, bixiPathService, Map) {
 
     $scope.map = {
       center: {
@@ -33,6 +31,7 @@ angular.module('bb-app')
     uiGmapIsReady.promise(1).then(function (instances) {
        var inst = instances[0]; // gets the map
         bixiStationService.getTorontoBixi().then(function(data) {
+          bixiPathService.getShortestPath();
           Map.calculateAndDisplayRoute(inst.map, data);
         });
 

@@ -1,6 +1,10 @@
 angular.module('bb-app')
 
+<<<<<<< HEAD
   .controller('MapCtrl', function($scope, uiGmapGoogleMapApi, uiGmapIsReady) {
+=======
+  .controller('MapCtrl', function($scope, uiGmapGoogleMapApi, bixiStationService) {
+>>>>>>> 0b548a91e48de9de46cd36663d97006ab132f64a
 
     $scope.map = {
       center: {
@@ -23,6 +27,8 @@ angular.module('bb-app')
         zoomControl: true
       }
     };
+
+    bixiStationService.getTorontoBixi();
 
     // $scope.marker = {
     //   id: 0,

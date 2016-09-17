@@ -40,6 +40,15 @@ angular.module('bb-app', ['ionic', 'uiGmapgoogle-maps'])
           controller: 'MapCtrl'
         }
       }
+  })
+    .state('app.location', {
+      url: '/location',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/location.html',
+          controller: 'LocationCtrl'
+        }
+      }
   });
 
   // if none of the above states are matched, use this as the fallback

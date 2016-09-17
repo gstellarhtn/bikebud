@@ -28,12 +28,16 @@ angular
         }
 
         function getTorontoBixi(){
-            return $http.get('https://feeds.bikesharetoronto.com/stations/stations.json')
+            return $http.get('v1/stations/stations.json')
                 .then(getTorontoSuccess)
                 .catch(getTorontoFailed)
 
             function getTorontoSuccess(response){
-                console.log(response);
+                var bixiStations = _.map(response.data.stationBeanList, function(station){
+                    return translateBixiData(station);
+                });
+                console.log(bixiStations);
+                return bixiStations;
             }
 
             function getTorontoFailed(error){
@@ -47,12 +51,12 @@ angular
                 longitude : 0,
                 latitude : 0
             };
-            if(data["station_id"])
-                result.id = data["station_id"];
-            if(data["lat"])
-                result.latitude = data["lat"];
-            if(data["lon"])
-                result.longitude = data["lon"];
+            if(data["station_id"] || data["id"])
+                result.id = data["station_id"] || data["id"];
+            if(data["lat"] || data["latitude"])
+                result.latitude = data["lat"] || data["latitude"];
+            if(data["lon"] || data["longitude"])
+                result.longitude = data["lon"] || data["longitude"];
             
             return result;
         }

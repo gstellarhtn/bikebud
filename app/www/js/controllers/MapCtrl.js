@@ -24,8 +24,8 @@ angular.module('bb-app')
       }
     };
 
-    bixiStationService.getMontrealBixi();
-    
+    bixiStationService.getTorontoBixi();
+
     // $scope.marker = {
     //   id: 0,
     //   options: {draggable: false},

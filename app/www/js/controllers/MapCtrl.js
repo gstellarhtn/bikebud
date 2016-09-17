@@ -2,7 +2,7 @@ angular.module('bb-app')
 
 .controller('MapCtrl', function($scope, uiGmapGoogleMapApi, uiGmapIsReady, bixiStationService, Map) {
 
-
+    console.log(jsnx);
 
     $scope.map = {
       center: {
@@ -94,14 +94,4 @@ angular.module('bb-app')
           }
         });
       }
-
-    // $scope.playlists = [
-    //   { title: 'Reggae', id: 1 },
-    //   { title: 'Chill', id: 2 },
-    //   { title: 'Dubstep', id: 3 },
-    //   { title: 'Indie', id: 4 },
-    //   { title: 'Rap', id: 5 },
-    //   { title: 'Cowbell', id: 6 }
-    // ];
-
   })

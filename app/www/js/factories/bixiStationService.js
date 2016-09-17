@@ -36,7 +36,6 @@ angular
                 var bixiStations = _.map(response.data.stationBeanList, function(station){
                     return translateBixiData(station);
                 });
-                console.log(bixiStations);
                 return bixiStations;
             }
 

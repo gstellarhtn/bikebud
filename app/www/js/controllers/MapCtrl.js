@@ -1,6 +1,6 @@
 angular.module('bb-app')
 
-  .controller('MapCtrl', function($scope, uiGmapGoogleMapApi) {
+  .controller('MapCtrl', function($scope, uiGmapGoogleMapApi, bixiStationService) {
 
     $scope.map = {
       center: {
@@ -24,6 +24,8 @@ angular.module('bb-app')
       }
     };
 
+    bixiStationService.getMontrealBixi();
+    
     // $scope.marker = {
     //   id: 0,
     //   options: {draggable: false},
@@ -45,12 +47,4 @@ angular.module('bb-app')
       console.log('Google Maps loaded');
     });
 
-    $scope.playlists = [
-      { title: 'Reggae', id: 1 },
-      { title: 'Chill', id: 2 },
-      { title: 'Dubstep', id: 3 },
-      { title: 'Indie', id: 4 },
-      { title: 'Rap', id: 5 },
-      { title: 'Cowbell', id: 6 }
-    ];
   })

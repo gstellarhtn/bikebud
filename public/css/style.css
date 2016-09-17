@@ -1,0 +1,29 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+a {
+  color: #00B7FF;
+}
+table th,
+label,
+.btn {
+  font-size: x-large;
+  text-transform: uppercase;
+}
+table td {
+  font-size: x-large;
+}
+ul li:before {
+  content: "";
+}
+ul li {
+  text-indent: 0em;
+}
+.row {
+  margin-bottom: 4rem;
+}
+#response {
+  margin-top: 4rem;
+  font-size: large;
+}

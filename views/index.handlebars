@@ -1,0 +1,103 @@
+<div class="container">
+
+	<div class="col-md-12 text-center">
+		<h1>Bank of Roach</h1>
+	</div>
+
+<div class="row col-md-4 col-md-offset-4">
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#add">Add Account</a></li>
+        <li><a data-toggle="tab" href="#balance">Balances</a></li>
+	</ul>
+</div>
+
+ <div class="row col-md-6 col-md-offset-3">
+	<div class="tab-content">
+        <div id="add" class="tab-pane fade in active">
+
+
+	        <div class="col-md-8 center-block">
+
+		        <form>
+				  <div class="form-group">
+				    <label for="accountName">Account Name</label>
+				    <input class="form-control" id="accountName" name="accountName">
+				  </div>
+				  <div class="form-group">
+				    <label for="accountBalance">Initial Balance</label>
+				    <input class="form-control" id="accountBalance" name="accountBalance">
+				  </div>
+				<input type="submit" id="submit" class="btn btn-primary" value="Create Account">
+				</form>
+				
+				<div id="response">
+				</div>
+
+			</div>
+		</div>
+        
+        <div id="balance" class="tab-pane fade">
+
+        <div class="row col-md-6 col-md-offset-3">
+        	<button id="more" type="button" class="btn btn-primary">More Money</button>  
+        </div>
+        	<div id="balance-table">
+
+			
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+//INSERT
+$('form').submit( function () {
+
+	if($('#accountName').val()===""){
+		$('#response').html("<p>The form cannot be empty.</p>");
+		return false;
+	}
+	var formName = $('#accountName').val();
+	var formdata = $(this).serialize();
+
+	$.ajax({
+	    type: "POST",
+	    url: "/api/insert",
+	    data: formdata,
+	    success: function(data){console.log(data);},
+	    error: function(req, err){console.log('my message' + err);}
+	 });
+
+	$('#response').html("<p>" + formName + "'s account has been created.</p>");
+	$('form').trigger('reset');
+
+	return false;
+});
+
+//BALANCES
+$(function() {
+	$('.nav-tabs li:last-child a').on('show.bs.tab', function (e) {
+		$('#response').html("");
+		$.get("/api/balances").then(function(r) {
+			$("#balance-table").html(r);
+		});
+	});
+});
+
+//MORE
+$(function() {
+	$('#more').click(function (e) {
+		$.post("/api/moremoney").then(function(r) {
+			$.get("/api/balances").then(function(r) {
+				$("#balance-table").html(r);
+			});
+		});
+	});
+});
+
+
+});
+</script>

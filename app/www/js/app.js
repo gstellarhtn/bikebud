@@ -5,8 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 angular.module('bb-app', ['ionic', 'uiGmapgoogle-maps'])
-
-.run(function($ionicPlatform) {
+.constant('_', window._)
+.run(function($ionicPlatform, $rootScope) {
+  $rootScope._ = window._;
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -56,7 +57,7 @@ angular.module('bb-app', ['ionic', 'uiGmapgoogle-maps'])
 
   uiGmapGoogleMapApiProvider.configure({
     key: 'AIzaSyDRqIfcKVWQTRIfmP5pwW80ECPe90U0PMY',
-    v: '3.22',
+    v: '3.24',
     libraries: 'places'
   });
 

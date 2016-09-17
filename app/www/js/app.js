@@ -56,7 +56,7 @@ angular.module('bb-app', ['ionic', 'uiGmapgoogle-maps'])
 
   uiGmapGoogleMapApiProvider.configure({
     key: 'AIzaSyDRqIfcKVWQTRIfmP5pwW80ECPe90U0PMY',
-    v: '3.22',
+    v: '3.24',
     libraries: 'places'
   });
 

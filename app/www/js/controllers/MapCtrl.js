@@ -4,11 +4,11 @@ angular.module('bb-app')
 
     $scope.map = {
       center: {
-        latitude: '45.5085',
-        longitude: '-73.5797',
+        latitude: '43.653226',
+        longitude: '-79.383184',
         accuracy: 0
       },
-      zoom: 6,
+      zoom: 10,
       pan: 1,
       markersControl: {},
       options: {
@@ -39,9 +39,9 @@ angular.module('bb-app')
 
     function calculateAndDisplayRoute(map) {
 
-        var directionsService = new google.maps.DirectionsService();
-     var directionsDisplay = new google.maps.DirectionsRenderer({preserveViewport: true, suppressMarkers: true});
-     directionsDisplay.setMap(map);
+      var directionsService = new google.maps.DirectionsService();
+      var directionsDisplay = new google.maps.DirectionsRenderer({preserveViewport: true, suppressMarkers: true});
+      directionsDisplay.setMap(map);
 
         var waypts = [];
         // var checkboxArray = document.getElementById('waypoints');

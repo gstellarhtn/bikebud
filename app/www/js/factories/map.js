@@ -60,23 +60,33 @@
           directionsDisplay.setMap(map)
           directionsDisplay.setDirections(response);
 
-          var marker = new google.maps.Marker({
-            map: map,
-            icon: "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=" + 'A' + "|" + 'FFFFFF' + "|000000",
-            position: new google.maps.LatLng(44.648862, -63.575320)
-          });
 
-          var marker = new google.maps.Marker({
-            map: map,
-            icon: "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=" + 'B' + "|" + 'FFFFFF' + "|000000",
-            position: new google.maps.LatLng(49.282729, -123.120738)
-          });
+          for (var i = 0; i < 100; i++) {
+            var marker = new google.maps.Marker({
+              map: map,
+              icon: "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=" + 'A' + "|" + 'FFFFFF' + "|000000",
+              position: new google.maps.LatLng(data[i].latitude, data[i].longitude)
+            });
+            console.log(marker);
+          }
 
-          var marker = new google.maps.Marker({
-            map: map,
-            icon: "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=" + 'B' + "|" + 'FFFFFF' + "|000000",
-            position: new google.maps.LatLng(45.501689, -73.567256)
-          });
+          // var marker = new google.maps.Marker({
+          //   map: map,
+          //   icon: "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=" + 'A' + "|" + 'FFFFFF' + "|000000",
+          //   position: new google.maps.LatLng(44.648862, -63.575320)
+          // });
+          //
+          // var marker = new google.maps.Marker({
+          //   map: map,
+          //   icon: "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=" + 'B' + "|" + 'FFFFFF' + "|000000",
+          //   position: new google.maps.LatLng(49.282729, -123.120738)
+          // });
+          //
+          // var marker = new google.maps.Marker({
+          //   map: map,
+          //   icon: "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=" + 'B' + "|" + 'FFFFFF' + "|000000",
+          //   position: new google.maps.LatLng(45.501689, -73.567256)
+          // });
 
           // var route = response.routes[0];
 

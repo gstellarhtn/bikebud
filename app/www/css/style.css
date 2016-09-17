@@ -15,19 +15,18 @@
     /*display: block;*/
 }
 
-@media only screen and (max-width: 768px) {
-  .tile {
-    max-width: 256px;
-    height: auto;
-    /*display: block;*/
-  }
+/*@media only screen and (max-width: 768px) {*/
+  /*.tile {*/
+    /*max-width: 256px;*/
+    /*height: auto;*/
+    /*!*display: block;*!*/
+  /*}*/
+/*}*/
+
+.nopadding .row {
+  padding: 0 0 0 0;
 }
 
-
-.nopadding {
-   padding: 0 !important;
-   margin: 0 !important;
-}
 
 img.grayscale {
     filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 3.5+, IE10 */
@@ -40,4 +39,12 @@ img.grayscale {
 img.grayscale:hover {
   filter: none;
   -webkit-filter: grayscale(0%);
+}
+
+.bar-footer {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.button.button-block {
+  margin: 0;
 }

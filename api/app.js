@@ -40,7 +40,7 @@ app.post('/addUser', function(req, res) {
       }
 
       // Insert customer
-      client.query("INSERT INTO bikebud.accounts (username, password) VALUES($1, $2);", [data.username, data.password], function(err, result) {
+      client.query("INSERT INTO bikebud.users (username, password) VALUES($1, $2);", [data.username, data.password], function(err, result) {
         done();
         res.send();
 
@@ -54,8 +54,42 @@ app.post('/addUser', function(req, res) {
   }
 });
 
-server.listen(3000, 'localhost', function() {
-  console.log('Example app listening on port 3000!');
+/* User login */
+app.post('/login', function(req, res) {
+
+  console.log(req.body);
+  console.log(req.params);
+
+  try {
+    // Grab data from http request
+    var data = {username: req.body.username, password: req.body.password};
+
+    // Get a Postgres client from the connection pool
+    pg.connect(connectionString, function(err, client, done) {
+      // Handle connection errors
+      if (err) {
+        done();
+        console.log(err);
+        return res.status(500).json({success: false, data: err});
+      }
+
+      // Insert customer
+      client.query("SELECT * FROM bikebud.users WHERE username = $1);", [data.username], function(err, result) {
+        done();
+        res.send();
+
+        if (err) {
+          return console.error('error happened during query', err)
+        }
+      });
+    });
+  } catch (ex) {
+    callback(ex);
+  }
+});
+
+server.listen(80, 'localhost', function() {
+  console.log('Example app listening on port 80!');
 });
 
 // app.listen(3000, function() {

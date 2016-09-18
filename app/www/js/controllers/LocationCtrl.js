@@ -4,4 +4,4 @@ angular.module('bb-app')
     $scope.createRoute = function() {
       $state.go('app.map', {});
     };
-  })
+  });

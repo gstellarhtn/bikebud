@@ -1,5 +1,11 @@
 /* Empty. Add your own CSS if you like */
 
+@import 'https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300';
+
+body {
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
 .angular-google-map,
 .angular-google-map-container {
   height: 100%;
@@ -10,9 +16,40 @@
 }
 
 .tile {
-    max-width: 100%;
-    height: auto;
-    /*display: block;*/
+  height: 300px;
+  border-bottom: 1px solid #fff;
+  background-size: cover;
+  width: 100%;
+  margin-bottom: 6px;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.tile:active .hover {
+  background: rgba(0,0,0,0);
+  transition: background 0.3s ease-in;
+}
+
+.tile .hover {
+  background: rgba(0,0,0,0.6);
+  height: 100%;
+  color: #fff;
+  text-align: center;
+  font-size: 50px;
+  padding-top: 150px;
+  font-weight: 600;
+}
+
+.tile.montreal {
+  background-image: url('/img/cities/montreal.jpg');
+}
+
+.tile.toronto {
+  background-image: url('/img/cities/toronto.jpg');
+}
+
+.tile.vancouver {
+  background-image: url('/img/cities/vancouver.jpg');
 }
 
 /*@media only screen and (max-width: 768px) {*/
@@ -47,4 +84,13 @@ img.grayscale:hover {
 
 .button.button-block {
   margin: 0;
+}
+
+
+.page-city {
+  //margin-top: 35px;
+}
+
+.page-city .row, .page-city .col {
+  padding:0;
 }

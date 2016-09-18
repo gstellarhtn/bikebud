@@ -75,7 +75,7 @@ app.post('/login', function(req, res) {
       }
 
       // Insert customer
-      var query = client.query("SELECT * FROM bikebud.users WHERE username = $1);", [data.username], function(err, result) {
+      var query = client.query("SELECT * FROM bikebud.users WHERE username = $1;", [data.username], function(err, result) {
         done();
         res.send();
 

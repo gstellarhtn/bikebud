@@ -1,34 +1,55 @@
-<ion-view view-title="Bike Bud">
+<ion-view view-title="Bike Bud" class="page-locations">
   <ion-content>
 
-    <div class="container-fluid nopadding">
-      <div class="row">
-        <div class="col-50">
-          <img src="img/locationTiles/mcgill.png" data="coords" class="tile grayscale" ng-click="vm.selectionChanged($event)">
-        </div>
-        <div class="col-50">
-          <img src="img/locationTiles/cross.png" class="tile grayscale">
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="col-50">
-          <img src="img/locationTiles/orange-julep.png" class="tile grayscale">
-        </div>
-        <div class="col-50">
-          <img src="img/locationTiles/notre-dame.png" class="tile grayscale">
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-50">
-          <img src="img/locationTiles/oldport.png" class="tile grayscale">
-        </div>
-        <div class="col-50">
-          <img src="img/locationTiles/schwartz.png" class="tile grayscale">
+    <div class="row">
+      <div ng-repeat="location in locations" class="col-50">
+        <div class="tile {{location.class}}"
+             ng-class="{'border-right': location.id % 2 === 1}"
+        >
+          <div class="hover"
+               data="{{location.coords}}"
+               ng-click="vm.selectionChanged($event)"
+          >
+            {{location.name}}
+          </div>
         </div>
       </div>
     </div>
+
+
+    <!--<div class="row">-->
+      <!--<div class="col-50">-->
+        <!--<div class="tile border-right st-joseph">-->
+          <!--<div class="hover">St-Joseph Oratory</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="col-50">-->
+        <!--<div class="tile mcgill" data="coords" class="tile" ng-click="vm.selectionChanged($event)">-->
+          <!--<div class="hover">McGill University</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="col-50">-->
+        <!--<div class="tile border-right oldport">-->
+          <!--<div class="hover">Old Port</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="col-50">-->
+        <!--<div class="tile border-right julep">-->
+          <!--<div class="hover">Orange Julep</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="col-50">-->
+        <!--<div class="tile border-right olympic-stadium">-->
+          <!--<div class="hover">Olympic Stadium</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="col-50">-->
+        <!--<div class="tile mont-royal">-->
+          <!--<div class="hover">Mont-Royal Park</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
 
   </ion-content>
   <div class="bar bar-footer">

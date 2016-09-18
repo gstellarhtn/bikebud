@@ -41,16 +41,45 @@ body {
 }
 
 .tile.montreal {
-  background-image: url('/img/cities/montreal.jpg');
+  background-image: url('../img/cities/montreal.jpg');
 }
 
 .tile.toronto {
-  background-image: url('/img/cities/toronto.jpg');
+  background-image: url('../img/cities/toronto.jpg');
 }
 
 .tile.vancouver {
-  background-image: url('/img/cities/vancouver.jpg');
+  background-image: url('../img/cities/vancouver.jpg');
 }
+
+
+/* MONTREAL */
+
+.tile.st-joseph {
+  background-image: url('../img/locations/st-josephs.png');
+}
+
+.tile.mcgill {
+  background-image: url('../img/locations/mcgill.png');
+}
+
+.tile.oldport {
+  background-image: url('../img/locations/oldport.png');
+}
+
+.tile.julep {
+  background-image: url('../img/locations/orange-julep.png');
+}
+
+.tile.olympic-stadium {
+  background-image: url('../img/locations/notre-dame.png');
+}
+
+.tile.mont-royal {
+  background-image: url('../img/locations/cross.png');
+}
+
+
 
 /*@media only screen and (max-width: 768px) {*/
   /*.tile {*/
@@ -93,4 +122,25 @@ img.grayscale:hover {
 
 .page-city .row, .page-city .col {
   padding:0;
+}
+
+.page-locations .tile {
+  height: 200px;
+  margin-bottom: 1px;
+}
+
+.page-locations .tile .hover {
+  font-size: 20px;
+}
+
+.page-locations .row {
+  flex-wrap: wrap;
+}
+
+.page-locations .row, .page-city .col {
+  padding:0;
+}
+
+.page-locations .tile.border-right {
+  border-right: 2px solid #fff;
 }

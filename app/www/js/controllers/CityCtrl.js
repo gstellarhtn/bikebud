@@ -6,7 +6,8 @@ angular.module('bb-app')
       {
         id: 1,
         name: 'St-Joseph Oratory',
-        location: {
+        class: 'st-joseph',
+        coords: {
           lat: '',
           lng: ''
         }
@@ -14,7 +15,8 @@ angular.module('bb-app')
       {
         id: 2,
         name: 'Olympic Stadium',
-        location: {
+        class: 'olympic-stadium',
+        coords: {
           lat: '',
           lng: ''
         }
@@ -22,7 +24,8 @@ angular.module('bb-app')
       {
         id: 3,
         name: 'McGill University',
-        location: {
+        class: 'mcgill',
+        coords: {
           lat: '',
           lng: ''
         }
@@ -30,7 +33,8 @@ angular.module('bb-app')
       {
         id: 4,
         name: 'Old Port Montreal',
-        location: {
+        class: 'oldport',
+        coords: {
           lat: '',
           lng: ''
         }
@@ -38,7 +42,17 @@ angular.module('bb-app')
       {
         id: 5,
         name: 'Orange Julep',
-        location: {
+        class: 'julep',
+        coords: {
+          lat: '',
+          lng: ''
+        }
+      },
+      {
+        id: 6,
+        name: 'Mont-Royal',
+        class: 'mont-royal',
+        coords: {
           lat: '',
           lng: ''
         }
@@ -49,7 +63,7 @@ angular.module('bb-app')
       {
         id: 1,
         name: 'CN Tower',
-        location: {
+        coords: {
           lat: '',
           lng: ''
         }
@@ -57,7 +71,7 @@ angular.module('bb-app')
       {
         id: 2,
         name: 'Casa Loma',
-        location: {
+        coords: {
           lat: '',
           lng: ''
         }
@@ -65,7 +79,7 @@ angular.module('bb-app')
       {
         id: 3,
         name: 'Rogers Center',
-        location: {
+        coords: {
           lat: '',
           lng: ''
         }
@@ -73,7 +87,7 @@ angular.module('bb-app')
       {
         id: 4,
         name: 'Cherry Beach',
-        location: {
+        coords: {
           lat: '',
           lng: ''
         }
@@ -81,7 +95,7 @@ angular.module('bb-app')
       {
         id: 5,
         name: 'Distellery District',
-        location: {
+        coords: {
           lat: '',
           lng: ''
         }
@@ -89,7 +103,7 @@ angular.module('bb-app')
       {
         id: 6,
         name: 'China town',
-        location: {
+        coords: {
           lat: '',
           lng: ''
         }

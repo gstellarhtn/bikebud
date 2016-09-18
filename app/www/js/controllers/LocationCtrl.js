@@ -1,9 +1,16 @@
 angular.module('bb-app')
   .controller('LocationCtrl', LocationCtrl);
 
-  LocationCtrl.$inject = [];
+  LocationCtrl.$inject = ['$scope', '$state', '$stateParams'];
 
-  function LocationCtrl(){
+  function LocationCtrl($scope, $state, $stateParams){
+
+    if ($stateParams.locations == null) {
+      $state.go('app.city');
+    }
+
+    $scope.locations = $stateParams.locations;
+
     var vm = this;
     vm.selectedDestinations = [];
     vm.createRoute = createRoute;
@@ -14,6 +21,9 @@ angular.module('bb-app')
     }
 
     function selectionChanged(obj){
+
+      console.log(obj.target);
+
       var destinationData = obj.target.attributes.data.value;
       if(!_.includes(vm.selectedDestinations, destinationData)){
         vm.selectedDestinations.push(destinationData);

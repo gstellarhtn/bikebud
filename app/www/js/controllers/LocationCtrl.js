@@ -15,7 +15,7 @@ angular.module('bb-app')
         lng: lng
       };
     }, function (err) {
-      console.error("Can't get user position!", err);
+      console.warn("Can't get user position!", err);
     });
 
 

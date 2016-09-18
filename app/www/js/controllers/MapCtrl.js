@@ -14,7 +14,7 @@ angular.module('bb-app')
         lng: lng
       };
     }, function (err) {
-      console.error("Can't get user position!", err);
+      console.warn("Can't get user position!", err);
     });
 
     console.log(position);
@@ -22,20 +22,13 @@ angular.module('bb-app')
     $scope.city = $stateParams.city;
 
     $scope.map = {
-      center: {
-        latitude: '43.653226',
-        longitude: '-79.383184'
-      },
+      center: position,
       zoom: 10,
       pan: 1,
       markersControl: {},
       options: {
         //custom styles to hide points of interest on the map
-        styles: [{
-          featureType: "poi",
-          elementType: "labels",
-          stylers: [{ visibility: "off" }]
-        }],
+        styles: [{"featureType":"landscape","stylers":[{"hue":"#FFBB00"},{"saturation":43.400000000000006},{"lightness":37.599999999999994},{"gamma":1}]},{"featureType":"road.highway","stylers":[{"hue":"#FFC200"},{"saturation":-61.8},{"lightness":45.599999999999994},{"gamma":1}]},{"featureType":"road.arterial","stylers":[{"hue":"#FF0300"},{"saturation":-100},{"lightness":51.19999999999999},{"gamma":1}]},{"featureType":"road.local","stylers":[{"hue":"#FF0300"},{"saturation":-100},{"lightness":52},{"gamma":1}]},{"featureType":"water","stylers":[{"hue":"#0078FF"},{"saturation":-13.200000000000003},{"lightness":2.4000000000000057},{"gamma":1}]},{"featureType":"poi","stylers":[{"hue":"#00FF6A"},{"saturation":-1.0989010989011234},{"lightness":11.200000000000017},{"gamma":1}]}],
         mapTypeControl: false,
         streetViewControl: false,
         zoomControl: true
@@ -67,8 +60,8 @@ angular.module('bb-app')
 
     // fires when gmap is loaded
     uiGmapIsReady.promise(1).then(function (instances) {
-      //TODO add waypoint of closest station 
-      
+      //TODO add waypoint of closest station
+
       var inst = instances[0]; // gets the map
       var pathWaypoints = [];
       console.log($scope.city);
@@ -114,7 +107,9 @@ angular.module('bb-app')
           stopover: true
           });
       });
-      console.log(position);
+      if (pathWaypoints == null) {
+        return;
+      }
       var dest = bixiPathService.getLongestPath(position, pathWaypoints);
       directionsService.route({
         origin: position["latitude"].toString() + ", " + position["longitude"].toString(),
@@ -127,6 +122,23 @@ angular.module('bb-app')
           directionsDisplay.setMap(map)
           directionsDisplay.setDirections(response);
           // var route = response.routes[0];
+
+          console.log("HEYYY", pathWaypoints);
+
+          // hackzzz
+          var points = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+
+          for (var i = 0; i < pathWaypoints.length - 1; i++) {
+            var marker = new google.maps.Marker({
+              map: map,
+              //icon: "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=" + 'B' + "|" + 'FFFFFF' + "|000000",
+              position: new google.maps.LatLng(pathWaypoints[i].coords.lat, pathWaypoints[i].coords.lon),
+              //label: points[i]
+            });
+          }
+
+
+
 
           // var summaryPanel = document.getElementById('directions-panel');
           // summaryPanel.innerHTML = '';

@@ -4,30 +4,30 @@ angular.module('bb-app')
     var poi = [
       {
         "id": 1,
-        "position": {
+        "coords": {
           lat: 45.502737,
-          lng: -73.572887
+          lon: -73.572887
         }
       },
       {
         "id": 2,
-        "position": {
+        "coords": {
           lat: 45.501689,
-          lng: -73.567256
+          lon: -73.567256
         }
       },
       {
         "id": 3,
-        "position": {
+        "coords": {
           lat: 45.492573,
-          lng: -73.618339
+          lon: -73.618339
         }
       },
       {
         "id": 4,
-        "position": {
+        "coords": {
           lat: 45.504318,
-          lng: -73.549567
+          lon: -73.549567
         }
       }
     ];
@@ -61,7 +61,7 @@ angular.module('bb-app')
     uiGmapIsReady.promise(1).then(function (instances) {
       var inst = instances[0]; // gets the map
       bixiStationService.getTorontoBixi().then(function (data) {
-        bixiPathService.getShortestPath(data);
+        bixiPathService.getShortestPath(poi, data);
         Map.calculateAndDisplayRoute(inst.map, data);
       });
 

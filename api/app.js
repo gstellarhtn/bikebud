@@ -13,7 +13,8 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
 
-var connectionString = process.env.DATABASE_URL || 'postgresql://root@10.128.0.2:26257?sslmode=disable';
+var connectionString = process.env.DATABASE_URL || 'postgresql://root@173.255.116.51:26257?sslmode=disable';
+
 var client = new pg.Client(connectionString);
 
 app.get('/', function(req, res) {
@@ -74,9 +75,11 @@ app.post('/login', function(req, res) {
       }
 
       // Insert customer
-      client.query("SELECT * FROM bikebud.users WHERE username = $1);", [data.username], function(err, result) {
+      var query = client.query("SELECT * FROM bikebud.users WHERE username = $1);", [data.username], function(err, result) {
         done();
         res.send();
+
+
 
         if (err) {
           return console.error('error happened during query', err)

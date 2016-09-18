@@ -17,21 +17,18 @@ angular.module('bb-app')
       });
     }
 
-    console.log($scope.locations);
-
     var vm = this;
     vm.selectedDestinations = [];
     vm.createRoute = createRoute;
     vm.selectionChanged = selectionChanged;
 
     function createRoute(){
-      $state.go('app.map', {});
+      $state.go('app.map', {'destinations': vm.selectedDestinations, 'city': $stateParams.city });
     }
 
     function selectionChanged(location){
       var coords = location.coords;
       $scope.locations[location.id - 1].selected = !$scope.locations[location.id - 1].selected;
-      console.log($scope.locations);
 
       if(!_.includes(vm.selectedDestinations, coords)){
         vm.selectedDestinations.push(coords);
@@ -40,7 +37,6 @@ angular.module('bb-app')
           return n === coords;
         });
       }
-      console.log(vm.selectedDestinations);
     }
 
   }

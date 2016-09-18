@@ -10,15 +10,14 @@ angular
         function getShortestPath(origin, data){
             var startingLocation = origin;
             var closestStation = data[0];
-            var closestStationDistance = getHaversineDistance(startingLocation.coords.lat, startingLocation.coords.lon, data[0].coords.lat, data[0].coords.lon);
+            var closestStationDistance = getHaversineDistance(startingLocation.lat, startingLocation.lng, data[0].coords.lat, data[0].coords.lon);
             _.forEach(data, function(station){
-                if(closestStationDistance > getHaversineDistance(startingLocation.coords.lat, startingLocation.coords.lon, station.coords.lat, station.coords.lon)){
-                    closestStationDistance = getHaversineDistance(startingLocation.coords.lat, startingLocation.coords.lon, station.coords.lat, station.coords.lon);
+                if(closestStationDistance > getHaversineDistance(startingLocation.lat, startingLocation.lng, station.coords.lat, station.coords.lon)){
+                    closestStationDistance = getHaversineDistance(startingLocation.lat, startingLocation.lng, station.coords.lat, station.coords.lon);
                     closestStation = station;
                 }
             });
-            console.log(closestStationDistance);
-            console.log(closestStation);
+            return closestStation;
         }
 
         function getHaversineDistance(lat1, lon1, lat2, lon2){

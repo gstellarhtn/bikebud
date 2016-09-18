@@ -46,7 +46,7 @@ angular.module('bb-app', ['ionic', 'uiGmapgoogle-maps'])
         views: {
           'menuContent': {
             templateUrl: 'templates/location.html',
-            controller: 'LocationCtrl'
+            controller: 'LocationCtrl as vm'
           }
         }
       })

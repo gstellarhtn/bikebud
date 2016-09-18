@@ -71,7 +71,7 @@ angular.module('bb-app', ['ionic', 'uiGmapgoogle-maps'])
       });
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/app/location');
+    $urlRouterProvider.otherwise('/app/city');
 
     uiGmapGoogleMapApiProvider.configure({
       key: 'AIzaSyDRqIfcKVWQTRIfmP5pwW80ECPe90U0PMY',

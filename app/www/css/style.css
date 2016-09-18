@@ -129,7 +129,12 @@ img.grayscale:hover {
   margin-bottom: 1px;
 }
 
+.page-locations .tile.selected .hover {
+  background: rgba(0,0,0,0.4);
+}
+
 .page-locations .tile .hover {
+  background: rgba(0,0,0,0.7);
   font-size: 20px;
 }
 

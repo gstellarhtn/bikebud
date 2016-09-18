@@ -5,15 +5,23 @@
     <div class="row">
       <div ng-repeat="location in locations" class="col-50">
         <div class="tile {{location.class}}"
-             ng-class="{'border-right': location.id % 2 === 1}"
+             ng-class="{'border-right': location.id % 2 === 1, 'selected': location.selected == true }"
         >
           <div class="hover"
-               data="{{location.coords}}"
-               ng-click="vm.selectionChanged($event)"
+               data={{location.coords}}
+               ng-click="vm.selectionChanged(location)"
           >
             {{location.name}}
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col padding">
+        <button class="button button-block button-balanced" ng-click="vm.createRoute()">
+          Let's Go!
+        </button>
       </div>
     </div>
 
@@ -52,9 +60,4 @@
     <!--</div>-->
 
   </ion-content>
-  <div class="bar bar-footer">
-    <button class="button button-block button-balanced" ng-click="vm.createRoute()">
-      Let's Go!
-    </button>
-  </div>
 </ion-view>

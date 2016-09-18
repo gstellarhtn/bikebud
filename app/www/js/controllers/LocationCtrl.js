@@ -1,9 +1,23 @@
 angular.module('bb-app')
   .controller('LocationCtrl', LocationCtrl);
 
-  LocationCtrl.$inject = ['$scope', '$state', '$stateParams'];
+  LocationCtrl.$inject = ['$scope', '$state', '$stateParams', 'GeolocationService'];
 
-  function LocationCtrl($scope, $state, $stateParams){
+  function LocationCtrl($scope, $state, $stateParams, GeolocationService){
+
+    var position = GeolocationService.getDefaultPosition();
+
+    GeolocationService.getCurrentPosition().then(function (position) {
+      var lat = position.coords.latitude;
+      var lng = position.coords.longitude;
+      position = {
+        lat: lat,
+        lng: lng
+      };
+    }, function (err) {
+      console.error("Can't get user position!", err);
+    });
+
 
     if ($stateParams.locations == null) {
       $state.go('app.city');
@@ -21,6 +35,10 @@ angular.module('bb-app')
     vm.selectedDestinations = [];
     vm.createRoute = createRoute;
     vm.selectionChanged = selectionChanged;
+
+    // Push current position
+    vm.selectedDestinations.push(position);
+
 
     function createRoute(){
       $state.go('app.map', {'destinations': vm.selectedDestinations, 'city': $stateParams.city });

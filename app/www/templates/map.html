@@ -1,5 +1,5 @@
 <ion-view view-title="Bike Bud">
-  <ion-content>
+  <ion-content scroll="false">
     <ui-gmap-google-map
             id="map-canvas"
             center='map.center'
@@ -8,13 +8,13 @@
             events="map.events"
             data-tap-disabled="true"
     >
-      <ui-gmap-marker
-      control="map.markersControl"
-      coords="marker.coords"
-      options="marker.options"
-      events="marker.events"
-      idkey="marker.id">
-      </ui-gmap-marker>
+      <!--<ui-gmap-marker-->
+      <!--control="map.markersControl"-->
+      <!--coords="marker.coords"-->
+      <!--options="marker.options"-->
+      <!--events="marker.events"-->
+      <!--idkey="marker.id">-->
+      <!--</ui-gmap-marker>-->
     </ui-gmap-google-map>
     <!--<ion-list>-->
       <!--<ion-item ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">-->

@@ -6,7 +6,7 @@ var http = require('http');
 
 var app = express();
 
-var server = http.createServer(app);
+//var server = http.createServer(app);
 
 app.use(bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
@@ -21,7 +21,7 @@ app.get('/', function(req, res) {
 });
 
 /*  Add user */
-app.post('/addUser', function(req, res) {
+app.post('/register', function(req, res) {
 
   console.log(req.body);
   console.log(req.params);
@@ -88,8 +88,8 @@ app.post('/login', function(req, res) {
   }
 });
 
-server.listen(80, function() {
-  console.log('Example app listening on port 80!');
+app.listen(80, function() {
+  console.log('Listening on port 80!');
 });
 
 // app.listen(3000, function() {

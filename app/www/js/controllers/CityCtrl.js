@@ -8,8 +8,8 @@ angular.module('bb-app')
         name: 'St-Joseph Oratory',
         class: 'st-joseph',
         coords: {
-          lat: '',
-          lng: ''
+          lat: 45.492,
+          lng: -73.618
         }
       },
       {
@@ -17,8 +17,8 @@ angular.module('bb-app')
         name: 'Olympic Stadium',
         class: 'olympic-stadium',
         coords: {
-          lat: '',
-          lng: ''
+          lat: 45.558,
+          lng: -73.552
         }
       },
       {
@@ -26,8 +26,8 @@ angular.module('bb-app')
         name: 'McGill University',
         class: 'mcgill',
         coords: {
-          lat: '',
-          lng: ''
+          lat: 45.5048,
+          lng: -73.5772
         }
       },
       {
@@ -35,8 +35,8 @@ angular.module('bb-app')
         name: 'Old Port Montreal',
         class: 'oldport',
         coords: {
-          lat: '',
-          lng: ''
+          lat: 45.512,
+          lng: -73.548
         }
       },
       {
@@ -44,8 +44,8 @@ angular.module('bb-app')
         name: 'Orange Julep',
         class: 'julep',
         coords: {
-          lat: '',
-          lng: ''
+          lat: 45.495,
+          lng: -73.656
         }
       },
       {
@@ -53,8 +53,8 @@ angular.module('bb-app')
         name: 'Mont-Royal',
         class: 'mont-royal',
         coords: {
-          lat: '',
-          lng: ''
+          lat: 45.495,
+          lng: -73.656
         }
       }
     ];

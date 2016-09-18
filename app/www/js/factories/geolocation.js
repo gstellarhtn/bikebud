@@ -10,8 +10,8 @@ angular.module('bb-app')
     lat = lastPosition.lat;
     lon = lastPosition.lon;
   } else {
-    lat = '43.472334';
-    lon = '-80.546139';
+    lat = '45.501689';
+    lon = '-73.567256';
   }
 
   var fallbackPositionObject = {

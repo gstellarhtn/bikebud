@@ -79,6 +79,31 @@ body {
   background-image: url('../img/locations/cross.png');
 }
 
+/* TORONTO */
+
+.tile.beach {
+  background-image: url('../img/locations/beach.png');
+}
+
+.tile.casa-loma {
+  background-image: url('../img/locations/casa-loma.png');
+}
+
+.tile.chinatown {
+  background-image: url('../img/locations/chinatown.png');
+}
+
+.tile.cn-tower {
+  background-image: url('../img/locations/cn-tower.png');
+}
+
+.tile.distillery {
+  background-image: url('../img/locations/distillery.png');
+}
+
+.tile.rogers-center {
+  background-image: url('../img/locations/rogers-center.png');
+}
 
 
 /*@media only screen and (max-width: 768px) {*/

@@ -63,6 +63,7 @@ angular.module('bb-app')
       {
         id: 1,
         name: 'CN Tower',
+        class: 'cn-tower',
         coords: {
           lat: '',
           lng: ''
@@ -71,6 +72,7 @@ angular.module('bb-app')
       {
         id: 2,
         name: 'Casa Loma',
+        class: 'casa-loma',
         coords: {
           lat: '',
           lng: ''
@@ -79,6 +81,7 @@ angular.module('bb-app')
       {
         id: 3,
         name: 'Rogers Center',
+        class: 'rogers-center',
         coords: {
           lat: '',
           lng: ''
@@ -87,6 +90,7 @@ angular.module('bb-app')
       {
         id: 4,
         name: 'Cherry Beach',
+        class: 'beach',
         coords: {
           lat: '',
           lng: ''
@@ -94,7 +98,8 @@ angular.module('bb-app')
       },
       {
         id: 5,
-        name: 'Distellery District',
+        name: 'Distillery District',
+        class: 'distillery',
         coords: {
           lat: '',
           lng: ''
@@ -102,7 +107,8 @@ angular.module('bb-app')
       },
       {
         id: 6,
-        name: 'China town',
+        name: 'Chinatown',
+        class: 'chinatown',
         coords: {
           lat: '',
           lng: ''

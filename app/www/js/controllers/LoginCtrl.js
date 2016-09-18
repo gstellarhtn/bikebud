@@ -5,7 +5,7 @@ angular.module('bb-app')
   	$scope.loginData = {};
 
     $scope.login = function() {
-    	$http.post('http://localhost:3000/login', $scope.loginData, {}).then(function(response) {
+    	$http.post('http://173.255.116.51:3000/login', $scope.loginData, {}).then(function(response) {
     		console.log("Login");
     	}).catch(function(error) {
     		console.log(error);
@@ -13,7 +13,7 @@ angular.module('bb-app')
     }
 
     $scope.register = function() {    
-    	$http.post('http://localhost:3000/register', $scope.loginData, {}).then(function(response) {
+    	$http.post('http://173.255.116.51:3000/register', $scope.loginData, {}).then(function(response) {
     		console.log("Register");
     	}).catch(function(error) {
     		console.log(error);

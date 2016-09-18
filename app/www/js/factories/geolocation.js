@@ -1,6 +1,6 @@
-angular.module('sm-app')
+angular.module('bb-app')
 
-.service('GeolocationService', function($q, $log, $ionicPlatform, $http, $cordovaGeolocation) {
+.service('GeolocationService', function($q, $ionicPlatform, $http, $cordovaGeolocation) {
 
   var lat, lon;
 
@@ -10,8 +10,8 @@ angular.module('sm-app')
     lat = lastPosition.lat;
     lon = lastPosition.lon;
   } else {
-    lat = '45.5085';
-    lon = '-73.5797';
+    lat = '43.472334';
+    lon = '-80.546139';
   }
 
   var fallbackPositionObject = {
@@ -48,12 +48,12 @@ angular.module('sm-app')
       .getCurrentPosition(options)
       .then(
         function (position) {
-          $log.debug('Got geolocation');
+          console.log('Got geolocation');
           window.localStorage['lastPosition'] = JSON.stringify({'lat': position.coords.latitude, 'lon': position.coords.longitude});
           defer.resolve(position);
         },
         function (locationError) {
-          $log.debug('Did not get geolocation');
+          console.log('Did not get geolocation');
           defer.reject({
             code: locationError.code,
             message: locationError.message,

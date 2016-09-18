@@ -1,15 +1,15 @@
 angular.module('bb-app')
 
   .controller('MapCtrl', function ($scope, uiGmapGoogleMapApi, uiGmapIsReady, bixiStationService, bixiPathService, Map, $stateParams, $state) {
-    if($stateParams.city == null){
-      $state.go('app.location');
-    }
+    // if($stateParams.city == null){
+    //   $state.go('app.location');
+    // }
     $scope.city = $stateParams.city;
+
     $scope.map = {
       center: {
         latitude: '43.653226',
-        longitude: '-79.383184',
-        accuracy: 0
+        longitude: '-79.383184'
       },
       zoom: 10,
       pan: 1,
@@ -26,8 +26,28 @@ angular.module('bb-app')
         zoomControl: true
       }
     };
-    uiGmapGoogleMapApi.then(function (maps) {
 
+    uiGmapGoogleMapApi.then(function () {
+      $scope.map = {
+        center: {
+          latitude: '43.653226',
+          longitude: '-79.383184'
+        },
+        zoom: 10,
+        pan: 1,
+        markersControl: {},
+        options: {
+          //custom styles to hide points of interest on the map
+          styles: [{
+            featureType: "poi",
+            elementType: "labels",
+            stylers: [{ visibility: "off" }]
+          }],
+          mapTypeControl: false,
+          streetViewControl: false,
+          zoomControl: true
+        }
+      };
     });
 
     // fires when gmap is loaded

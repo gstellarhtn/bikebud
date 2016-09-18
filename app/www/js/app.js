@@ -4,7 +4,7 @@
 // modules 'starter' is the name of this angular module example (also set in a
 // <body> attribute in index.html) the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('bb-app', ['ionic', 'uiGmapgoogle-maps'])
+angular.module('bb-app', ['ionic', 'uiGmapgoogle-maps', 'ngCordova'])
   .constant('_', window._)
   .run(function($ionicPlatform, $rootScope) {
     $rootScope._ = window._;

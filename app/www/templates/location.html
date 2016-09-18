@@ -4,7 +4,7 @@
     <div class="container-fluid nopadding">
       <div class="row">
         <div class="col-50">
-          <img src="img/locationTiles/mcgill.png" class="tile grayscale">
+          <img src="img/locationTiles/mcgill.png" data="coords" class="tile grayscale" ng-click="vm.selectionChanged($event)">
         </div>
         <div class="col-50">
           <img src="img/locationTiles/cross.png" class="tile grayscale">
@@ -32,7 +32,7 @@
 
   </ion-content>
   <div class="bar bar-footer">
-    <button class="button button-block button-balanced" ng-click="createRoute()">
+    <button class="button button-block button-balanced" ng-click="vm.createRoute()">
       Let's Go!
     </button>
   </div>

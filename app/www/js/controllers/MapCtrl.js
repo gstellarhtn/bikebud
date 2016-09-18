@@ -61,7 +61,7 @@ angular.module('bb-app')
     uiGmapIsReady.promise(1).then(function (instances) {
       var inst = instances[0]; // gets the map
       bixiStationService.getTorontoBixi().then(function (data) {
-        bixiPathService.getShortestPath(poi, data);
+        bixiPathService.getShortestPath(poi[0], data);
         Map.calculateAndDisplayRoute(inst.map, data);
       });
 

@@ -8,7 +8,7 @@ angular
         };
 
         function getShortestPath(origin, data){
-            var startingLocation = origin[0];
+            var startingLocation = origin;
             var closestStation = data[0];
             var closestStationDistance = getHaversineDistance(startingLocation.coords.lat, startingLocation.coords.lon, data[0].coords.lat, data[0].coords.lon);
             _.forEach(data, function(station){
@@ -29,7 +29,6 @@ angular
                 Math.cos(lat1 * (Math.PI / 180.0)) *
                 Math.cos(lat2 * (Math.PI / 180.0)) *
                 Math.pow(Math.sin(dlon / 2.0), 2.0);
-            var t = 2 * radiusInKM * Math.atan2(Math.sqrt(haversine), Math.sqrt(1.0 - haversine));
             return 2 * radiusInKM * Math.atan2(Math.sqrt(haversine), Math.sqrt(1.0 - haversine));
         }
     };

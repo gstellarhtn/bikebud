@@ -7,40 +7,40 @@ angular.module('bb-app')
         id: 1,
         name: 'St-Joseph Oratory',
         location: {
-          lat: '',
-          lng: ''
+          lat: 45.492,
+          lng: -73.618
         }
       },
       {
         id: 2,
         name: 'Olympic Stadium',
         location: {
-          lat: '',
-          lng: ''
+          lat: 45.558,
+          lng: -73.552
         }
       },
       {
         id: 3,
         name: 'McGill University',
         location: {
-          lat: '',
-          lng: ''
+          lat: 45.5048,
+          lng: -73.5772
         }
       },
       {
         id: 4,
         name: 'Old Port Montreal',
         location: {
-          lat: '',
-          lng: ''
+          lat: 45.512,
+          lng: -73.548
         }
       },
       {
         id: 5,
         name: 'Orange Julep',
         location: {
-          lat: '',
-          lng: ''
+          lat: 45.495,
+          lng: -73.656
         }
       }
     ];

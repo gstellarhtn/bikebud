@@ -47,15 +47,17 @@ angular
         function translateBixiData(data){
             var result = {
                 id : 0,
-                longitude : 0,
-                latitude : 0
+                coords: {
+                    lat: 0,
+                    lon: 0,
+                },
             };
             if(data["station_id"] || data["id"])
                 result.id = data["station_id"] || data["id"];
             if(data["lat"] || data["latitude"])
-                result.latitude = data["lat"] || data["latitude"];
+                result.coords["lat"] = data["lat"] || data["latitude"];
             if(data["lon"] || data["longitude"])
-                result.longitude = data["lon"] || data["longitude"];
+                result.coords["lon"]  = data["lon"] || data["longitude"];
             
             return result;
         }

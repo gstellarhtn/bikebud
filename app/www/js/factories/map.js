@@ -67,7 +67,6 @@
               icon: "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=" + 'A' + "|" + 'FFFFFF' + "|000000",
               position: new google.maps.LatLng(data[i].latitude, data[i].longitude)
             });
-            console.log(marker);
           }
 
           // var marker = new google.maps.Marker({

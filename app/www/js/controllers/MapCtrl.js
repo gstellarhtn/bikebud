@@ -1,37 +1,10 @@
 angular.module('bb-app')
 
-  .controller('MapCtrl', function ($scope, uiGmapGoogleMapApi, uiGmapIsReady, bixiStationService, bixiPathService, Map) {
-    var poi = [
-      {
-        "id": 1,
-        "coords": {
-          lat: 45.502737,
-          lon: -73.572887
-        }
-      },
-      {
-        "id": 2,
-        "coords": {
-          lat: 45.501689,
-          lon: -73.567256
-        }
-      },
-      {
-        "id": 3,
-        "coords": {
-          lat: 45.492573,
-          lon: -73.618339
-        }
-      },
-      {
-        "id": 4,
-        "coords": {
-          lat: 45.504318,
-          lon: -73.549567
-        }
-      }
-    ];
-
+  .controller('MapCtrl', function ($scope, uiGmapGoogleMapApi, uiGmapIsReady, bixiStationService, bixiPathService, Map, $stateParams, $state) {
+    if($stateParams.city == null){
+      $state.go('app.location');
+    }
+    $scope.city = $stateParams.city;
     $scope.map = {
       center: {
         latitude: '43.653226',
@@ -60,13 +33,31 @@ angular.module('bb-app')
     // fires when gmap is loaded
     uiGmapIsReady.promise(1).then(function (instances) {
       var inst = instances[0]; // gets the map
-      bixiStationService.getTorontoBixi().then(function (data) {
-        bixiPathService.getShortestPath(poi[0], data);
-        Map.calculateAndDisplayRoute(inst.map, data);
-      });
+      var pathWaypoints = [];
+      console.log($scope.city);
+      if ($scope.city === 'Montreal'){
+        bixiStationService.getMontrealBixi().then(function (data) {
+          console.log("hai");
+          pathWaypoints = getBixiWaypoints($stateParams.destinations, data);
+          Map.calculateAndDisplayRoute(inst.map, data);
+        });
+      } else {
+        bixiStationService.getTorontoBixi().then(function (data) {
+          pathWaypoints = getBixiWaypoints($stateParams.destinations, data);
+          Map.calculateAndDisplayRoute(inst.map, data);
+        });
+      }
 
     });
 
+    function getBixiWaypoints(destinations, stations){
+      var result = []
+      _.forEach(destinations, function(destination){
+        result.push(bixiPathService.getShortestPath(destination, stations));
+      });
+      console.log(result);
+      return result; // coords of each bixi station nearby each destination of the route
+    }
     function calculateAndDisplayRoute(map) {
 
       var directionsService = new google.maps.DirectionsService();

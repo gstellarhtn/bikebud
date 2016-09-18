@@ -34,6 +34,7 @@ angular.module('bb-app', ['ionic', 'uiGmapgoogle-maps'])
       })
       .state('app.map', {
         url: '/map',
+        params: {destinations: null, city: null},
         views: {
           'menuContent': {
             templateUrl: 'templates/map.html',
@@ -52,7 +53,7 @@ angular.module('bb-app', ['ionic', 'uiGmapgoogle-maps'])
       })
       .state('app.location', {
         url: '/location',
-        params: {locations: null},
+        params: {locations: null, city: null},
         views: {
           'menuContent': {
             templateUrl: 'templates/location.html',

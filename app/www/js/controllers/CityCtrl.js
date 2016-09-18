@@ -125,7 +125,7 @@ angular.module('bb-app')
       if (locations == null) {
         $state.go('app');
       } else {
-        $state.go('app.location', {'locations': locations});
+        $state.go('app.location', {'locations': locations, 'city': city});
       }
 
     };

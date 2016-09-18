@@ -7,6 +7,7 @@ angular.module('bb-app')
     $scope.login = function() {
     	$http.post('http://173.255.116.51:3000/login', $scope.loginData, {}).then(function(response) {
     		console.log("Login");
+    		$state.go('app.location', {});
     	}).catch(function(error) {
     		console.log(error);
     	});
@@ -15,6 +16,7 @@ angular.module('bb-app')
     $scope.register = function() {    
     	$http.post('http://173.255.116.51:3000/register', $scope.loginData, {}).then(function(response) {
     		console.log("Register");
+    		$state.go('app.location', {});
     	}).catch(function(error) {
     		console.log(error);
     	});

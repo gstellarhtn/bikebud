@@ -79,8 +79,6 @@ app.post('/login', function(req, res) {
         done();
         res.send();
 
-
-
         if (err) {
           return console.error('error happened during query', err)
         }
@@ -94,7 +92,3 @@ app.post('/login', function(req, res) {
 app.listen(3000, function() {
   console.log('Listening on port 80!');
 });
-
-// app.listen(3000, function() {
-//   console.log('Example app listening on port 3000!');
-// });

@@ -39,7 +39,6 @@ angular.module('bb-app')
     // Push current position
     vm.selectedDestinations.push(position);
 
-
     function createRoute(){
       $state.go('app.map', {'destinations': vm.selectedDestinations, 'city': $stateParams.city });
     }
@@ -55,6 +54,7 @@ angular.module('bb-app')
           return n === coords;
         });
       }
+      console.log(vm.selectedDestinations);
     }
 
   }

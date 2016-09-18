@@ -4,7 +4,8 @@ angular
 
     function bixiPathService(){
         return {
-            getShortestPath: getShortestPath
+            getShortestPath: getShortestPath,
+            getLongestPath: getLongestPath
         };
 
         function getShortestPath(origin, data){
@@ -18,6 +19,19 @@ angular
                 }
             });
             return closestStation;
+        }
+
+        function getLongestPath(origin, data){
+            var startingLocation = origin;
+            var furthestStation = data[0];
+            var furthestStationDistance = getHaversineDistance(startingLocation.latitude, startingLocation.longitude, data[0].coords.lat, data[0].coords.lon);
+            _.forEach(data, function(station){
+                if(furthestStationDistance < getHaversineDistance(startingLocation.latitude, startingLocation.longitude, station.coords.lat, station.coords.lon)){
+                    furthestStationDistance = getHaversineDistance(startingLocation.latitude, startingLocation.longitude, station.coords.lat, station.coords.lon);
+                    furthestStation = station;
+                }
+            });
+            return furthestStation;
         }
 
         function getHaversineDistance(lat1, lon1, lat2, lon2){

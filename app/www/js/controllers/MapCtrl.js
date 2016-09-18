@@ -1,9 +1,24 @@
 angular.module('bb-app')
 
-  .controller('MapCtrl', function ($scope, uiGmapGoogleMapApi, uiGmapIsReady, bixiStationService, bixiPathService, Map, $stateParams, $state) {
+  .controller('MapCtrl', function ($scope, uiGmapGoogleMapApi, uiGmapIsReady, bixiStationService, bixiPathService, Map, $stateParams, $state, GeolocationService) {
     // if($stateParams.city == null){
     //   $state.go('app.location');
     // }
+    var position = GeolocationService.getDefaultPosition();
+
+    GeolocationService.getCurrentPosition().then(function (position) {
+      var lat = position.coords.latitude;
+      var lng = position.coords.longitude;
+      position = {
+        lat: lat,
+        lng: lng
+      };
+    }, function (err) {
+      console.error("Can't get user position!", err);
+    });
+
+    console.log(position);
+
     $scope.city = $stateParams.city;
 
     $scope.map = {
@@ -52,19 +67,20 @@ angular.module('bb-app')
 
     // fires when gmap is loaded
     uiGmapIsReady.promise(1).then(function (instances) {
+      //TODO add waypoint of closest station 
+      
       var inst = instances[0]; // gets the map
       var pathWaypoints = [];
       console.log($scope.city);
       if ($scope.city === 'Montreal'){
         bixiStationService.getMontrealBixi().then(function (data) {
-          console.log("hai");
           pathWaypoints = getBixiWaypoints($stateParams.destinations, data);
-          Map.calculateAndDisplayRoute(inst.map, data);
+          calculateAndDisplayRoute(inst.map, pathWaypoints);
         });
       } else {
         bixiStationService.getTorontoBixi().then(function (data) {
           pathWaypoints = getBixiWaypoints($stateParams.destinations, data);
-          Map.calculateAndDisplayRoute(inst.map, data);
+          calculateAndDisplayRoute(inst.map, pathWaypoints);
         });
       }
 
@@ -75,15 +91,12 @@ angular.module('bb-app')
       _.forEach(destinations, function(destination){
         result.push(bixiPathService.getShortestPath(destination, stations));
       });
-      console.log(result);
       return result; // coords of each bixi station nearby each destination of the route
     }
-    function calculateAndDisplayRoute(map) {
-
+    function calculateAndDisplayRoute(map, pathWaypoints) {
       var directionsService = new google.maps.DirectionsService();
       var directionsDisplay = new google.maps.DirectionsRenderer({ preserveViewport: true, suppressMarkers: true });
       directionsDisplay.setMap(map);
-
       var waypts = [];
       // var checkboxArray = document.getElementById('waypoints');
       // for (var i = 0; i < checkboxArray.length; i++) {
@@ -94,26 +107,23 @@ angular.module('bb-app')
       //     });
       //   }
       // }
-      waypts.push({
-        location: "montreal, quebec",
-        stopover: true
+      _.forEach(pathWaypoints, function(wp){
+        var loc = wp.coords["lat"].toString() + "," + wp.coords["lon"].toString();
+          waypts.push({
+          location: loc,
+          stopover: true
+          });
       });
-      waypts.push({
-        location: "toronto, ont",
-        stopover: true
-      });
-
+      console.log(position);
+      var dest = bixiPathService.getLongestPath(position, pathWaypoints);
       directionsService.route({
-        // origin: document.getElementById('start').value,
-        // destination: document.getElementById('end').value,
-        origin: "Halifax, NS",
-        destination: "Vancouver, BC",
+        origin: position["latitude"].toString() + ", " + position["longitude"].toString(),
+        destination: dest.coords["lat"].toString() + ", " + dest.coords["lon"].toString(),
         waypoints: waypts,
         optimizeWaypoints: true,
         travelMode: 'BICYCLING'
       }, function (response, status) {
         if (status === 'OK') {
-
           directionsDisplay.setMap(map)
           directionsDisplay.setDirections(response);
           // var route = response.routes[0];

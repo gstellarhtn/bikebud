@@ -19,6 +19,7 @@ angular
                 var bixiStations = _.map(response.data.data.stations, function(station){
                     return translateBixiData(station);
                 });
+                console.log(bixiStations.length);
                 return bixiStations;
             }
 
@@ -36,6 +37,7 @@ angular
                 var bixiStations = _.map(response.data.stationBeanList, function(station){
                     return translateBixiData(station);
                 });
+                console.log(bixiStations.length);
                 return bixiStations;
             }
 
@@ -52,6 +54,7 @@ angular
                     lon: 0,
                 },
             };
+
             if(data["station_id"] || data["id"])
                 result.id = data["station_id"] || data["id"];
             if(data["lat"] || data["latitude"])
